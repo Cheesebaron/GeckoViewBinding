@@ -1,0 +1,19 @@
+﻿<metadata>
+	<remove-node path="/api/package[contains(@name,'org.mozilla.thirdparty')]" />
+
+	<remove-node path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/field[@name='mWindow']" />
+	<remove-node path="/api/package[@name='org.mozilla.geckoview']/class[@name='RuntimeSettings.Builder']/method[@name='newSettings' and count(parameter)=1 and parameter[1]]" />
+
+	<!-- Because of interfaces contain const fields Xamarin generate abstract classes, which clash with property name. Renaming properties -->
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='getHistoryDelegate' and count(parameter)=0]" name="propertyName">SessionHistoryDelegate</attr>
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='setHistoryDelegate' and count(parameter)=1 and parameter[1][@type='org.mozilla.geckoview.GeckoSession.HistoryDelegate']]" name="propertyName">SessionHistoryDelegate</attr>
+
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='getNavigationDelegate' and count(parameter)=0]" name="propertyName">SessionNavigationDelegate</attr>
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='setNavigationDelegate' and count(parameter)=1 and parameter[1][@type='org.mozilla.geckoview.GeckoSession.NavigationDelegate']]" name="propertyName">SessionNavigationDelegate</attr>
+
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='getPermissionDelegate' and count(parameter)=0]" name="propertyName">SessionPermissionDelegate</attr>
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='setPermissionDelegate' and count(parameter)=1 and parameter[1][@type='org.mozilla.geckoview.GeckoSession.PermissionDelegate']]" name="propertyName">SessionPermissionDelegate</attr>
+
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='getSelectionActionDelegate' and count(parameter)=0]" name="propertyName">SessionSelectionActionDelegate</attr>
+	<attr path="/api/package[@name='org.mozilla.geckoview']/class[@name='GeckoSession']/method[@name='setSelectionActionDelegate' and count(parameter)=1 and parameter[1][@type='org.mozilla.geckoview.GeckoSession.SelectionActionDelegate']]" name="propertyName">SessionSelectionActionDelegate</attr>
+</metadata>
